@@ -6,14 +6,23 @@ PostgreSQL ve Microsoft SQL Server yönetim sistemlerinde veri tabanı işlemler
 ##### 1- Kurulum yaptığınız her bir sistem üzerinde “kitapevi” isminde bir veritabanı yaratınız ve daha sonra aşağıda tablo şemaları verilen tabloları bu veritabanı içerisine, veri tanımlama dili olan DDL(Data Definition Language) ile oluşturunuz. 
 
 ##### 2- Aşağıdaki tabloları uygun veri tipleri ve anahtarlarını belirleyerek oluşturun ve bu taplolara uygun veri girişleri yapınız (SQL kullanarak (insert into) birden fazla veri girişini aynı anda yaptırınız). Aşağıda verilen SQL sorgularını hazırlayıp sonuçlarına ilişkin ekran çıktılarını elde ediniz. 
+
 _Tablolar:_
+
  _Book (book_no, name, first-author, year, price, publisher_no,subject_no)_
+ 
  _Student (student_no, name, department_no)_
+ 
  _Subject (subject_no, stitle)_
+ 
  _Department(department_no,departmentname)_
+ 
  _Publisher (publisher_no, name)_
+ 
  _Buys (student_no, book_no) : Öğrencilerin almış olduğu kitaplar._
+ 
  _Covers (subject_no, book_no): Her bir kitabın hangi konulara ait olduğunu ifade eder. Bir kitap birden fazla konu altına girebilir._
+ 
  _Studies (student_no, subject_no): Her bir öğrencinin hangi konularda ilgilendiğini ifade eder._
 
 ##### 3.	Hazırlanması istenilen SQL Sorguları:
