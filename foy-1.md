@@ -65,19 +65,22 @@ CREATE TABLE table_name (
 PostgreSQL-de tabloların oluşturulması:
 
 ```sql
-CREATE TABLE Publisher (
+CREATE TABLE publisher (
     publisher_no bigserial PRIMARY KEY, 
     publisher_name char(50)
 );
-CREATE TABLE Student (
+
+CREATE TABLE student (
     student_no bigserial PRIMARY KEY,
     student_name char(50),
     department_no integer REFERENCES department(department_no) --foreign key
 );
+
 CREATE TABLE studies (
     student_no integer REFERENCES student(student_no),
     subject_no integer REFERENCES subject(subject_no) 
 );
+
 CREATE TABLE book (
     book_no bigserial PRIMARY KEY,
     book_name char(50),
@@ -89,7 +92,7 @@ CREATE TABLE book (
 );
 ```
 
-Oluşturulan tablolara veri giriş için;
+Oluşturulan tablolara veri girişinin yapılması;
 
 ```sql
 INSERT INTO subject VALUES (1, 'Modern Klasikler'), (2, 'Siber Güvenlik Kitapları');
@@ -119,6 +122,7 @@ CREATE TABLE book (
 	FOREIGN KEY (subject_no) REFERENCES subject (subject_no),
 	FOREIGN KEY (publisher_no) REFERENCES publisher (publisher_no)
 );
+
 CREATE TABLE buys (
     student_no TINYINT,
     book_no TINYINT,
@@ -127,7 +131,7 @@ CREATE TABLE buys (
 );
 ```
 
-Oluşturulan tablolara veri giriş için;
+Oluşturulan tablolara veri girişinin yapılması;
 
 ```sql
 INSERT INTO subject
