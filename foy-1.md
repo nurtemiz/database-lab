@@ -8,7 +8,7 @@ PostgreSQL ve Microsoft SQL Server yönetim sistemlerinde veri tabanı işlemler
 
 PostgreSQL veritabanı yönetim sisteminde veri tabanı oluşturmak için sol menuden Servers -> PostgreSQL -> Databases ->  Create -> Database seçilerek -kitapevi- adında bir veri tabanı oluşturulur. Çalışma alanında SQL penceresini açtığımızda aşağıdaki komut kümesi görüntülenir.
 
-```ddl
+```sql
 CREATE DATABASE kitapevi
     WITH 
     OWNER = postgres
@@ -18,7 +18,7 @@ CREATE DATABASE kitapevi
 ```
 Microsoft SQL Server-da ise $PC_NAME -> DATABASE -> NEW DATABASE seçilere –kitabevi- adında yeni bir veri tabanı oluşturulur. Üst menüden New Query seçilerek aşağıdaki komut kümesi (DDL) kullanılarak yeni bir veri tabanı da oluşturulabilir. 
 
-```ddl
+```sql
 CREATE DATABASE kitapevi ON PRIMARY( --PRIMARY belirtilmemişse, CREATE DATABASE deyiminde listelenen ilk dosya birincil dosya olur.
 NAME = kitapevi_Data, --SQL Server veritabanına başvurduğunda bu ismi kullanır. İsim uniqe(benzersiz) olmak zorundadır.
 FILENAME = 'C:\kitaoeviData.mdf', --Veritabanın kaydedileceği yolun belirtildiği yerdir. Eğer belirtilen klasör yok ise önceden oluşturulması gerekir.
