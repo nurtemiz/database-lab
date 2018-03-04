@@ -2,11 +2,11 @@
 
 #### MySQL, PostgreSQL, Microsoft SQL Server, ORACLE 11g XE veritabanı yönetim sistemlerinden seçtiğiniz herhangi iki tanesinin kurulumunu yapınız ve aşağıdaki işlemleri her iki sistem üzerinde de ayrı ayrı gerçekleştiriniz. 
 
-PostgreSQL ve Microsoft SQL Server yönetim sistemlerinde veri tabanı işlemleri yapılacaktır.
+PostgreSQL ve Microsoft SQL Server veritabanı yönetim sistemlerinde veri tabanı işlemleri yapılacaktır.
 
 ##### 1- Kurulum yaptığınız her bir sistem üzerinde “kitapevi” isminde bir veritabanı yaratınız ve daha sonra aşağıda tablo şemaları verilen tabloları bu veritabanı içerisine, veri tanımlama dili olan DDL(Data Definition Language) ile oluşturunuz. 
 
-PostgreSQL veritabanı yönetim sisteminde veri tabanı oluşturmak için sol menuden Servers -> PostgreSQL -> Databases ->  Create -> Database seçilerek -kitapevi- adında bir veri tabanı oluşturulur. Çalışma alanında SQL penceresini açtığımızda aşağıdaki komut kümesi görüntülenir.
+PostgreSQL veritabanı yönetim sisteminde veri tabanı oluşturmak için sol menuden Servers -> PostgreSQL -> Databases ->  Create -> Database seçilerek -kitapevi- adında bir veri tabanı oluşturulur. Çalışma alanında SQL penceresini açıldığında aşağıdaki komut kümesi görüntülenir.
 
 ```sql
 CREATE DATABASE kitapevi
