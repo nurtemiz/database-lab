@@ -187,42 +187,113 @@ FROM publisher
 INNER JOIN book ON publisher.publisher_no = book.publisher_no 
 WHERE book_year >= 2000 AND book_year <= 2015
 GROUP BY publisher.publisher_no, publisher.publisher_name 
-HAVING COUNT (publisher.publisher_name) < 5
+HAVING COUNT (publisher.publisher_name) < 5;
 ```
 
 * En pahalı 10 kitabı adlarına göre listelenmesi:
 
 ```sql
+--Microsoft SQL server için;
+SELECT top (10) book_name, book_price FROM book ORDER BY book_price DESC;
+
+--pgAdmin için;
+SELECT book_name, book_price FROM book ORDER BY book_price DESC limit 10;
 ```
 
 * 2002'den 2004'e kadar her yıl en az bir kitap yayınlayan yayıncıların listelenmesi:
 
 ```sql
+SELECT publishers.publisher_name FROM 
+(SELECT publisher.publisher_name,
+(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2002) book_count_2002,
+(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2003) book_count_2003,
+(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2004) book_count_2004 FROM publisher ) publishers 
+WHERE publishers.book_count_2002 > 0 OR publishers.book_count_2003 > 0 OR publishers.book_count_2004 > 0;
 ```
 
 * Son beş yılda her yıl en az bir kitap yayınlayan yayıncıların listelenmesi:
 
 ```sql
+SELECT publishers.publisher_name FROM 
+(SELECT publisher.publisher_name,
+(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2018) book_count_2018,
+(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2017) book_count_2017,
+(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2016) book_count_2016,
+(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2015) book_count_2015,
+(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2014) book_count_2014 FROM publisher ) publishers 
+WHERE publishers.book_count_2018 > 0 
+OR publishers.book_count_2017 > 0 
+OR publishers.book_count_2016 > 0 
+OR publishers.book_count_2015 > 0 
+OR publishers.book_count_2014 > 0;
 ```
 
 * En çok kitap yazan yazarın yazmış olduğu kitapların listelenmesi:
 
 ```sql
+--Microsoft SQL server için;
+SELECT book_name 
+FROM book 
+WHERE book_author 
+IN (SELECT TOP(1) book_author FROM book GROUP BY book_author ORDER BY COUNT(*) DESC);
+
+--pgAdmin için;
+SELECT book_name 
+FROM book 
+WHERE book_author 
+IN (SELECT book_author FROM book GROUP BY book_author ORDER BY COUNT(*) DESC limit 1);
 ```
 
 * Ortalama kitap fiyatının üzerinde olan kitap isimlerinin listelenmesi:
 
 ```sql
+SELECT book_name, book_price 
+FROM book 
+WHERE book_price > (SELECT AVG(book_price) "ortalama_stok" FROM book);
+```
+ya da
+
+```sql
+SELECT book_name, SUM(book_price) "book_price" 
+FROM book 
+GROUP BY book_name 
+HAVING SUM(book_price) > (SELECT AVG(book_price) FROM book);
 ```
 
 * Bilgisayar Mühendisliği Bölümü öğrencilerinden VERİTABANLARI konusu ile ilgilenenlerin isimlerinin listelenmesi:
 
 ```sql
+SELECT student.student_name 
+FROM (SELECT student_no 
+	FROM book 
+	INNER JOIN buys 
+	ON book.book_no = buys.book_no 
+	WHERE subject_no = 2) interested 
+INNER JOIN student 
+ON student.student_no=interested.student_no;
 ```
 
 * AĞLAR konusunda satın kitap alan Bilgisayar Mühendisliği Bölümünde olmayan öğrencilerin adlarının ve bölüm adlarının listelenmesi:
 
 ```sql
+SELECT xx.student_name, department_name 
+FROM (SELECT student_name, department_no 
+	FROM student 
+	WHERE student_no 
+	IN (SELECT student_no 
+		FROM buys 
+		WHERE book_no 
+		IN (SELECT book_no 
+			FROM book 
+			WHERE subject_no = (SELECT subject_no 
+				FROM subject 
+				WHERE subject_title = 'Yazılım Kitapları')
+			)
+		)
+	) xx 
+INNER JOIN department 
+ON department.department_no=xx.department_no 
+WHERE department.department_no != 2;
 ```
 
 * Çalıştığı tüm konularla ilgili kitapları satın almış öğrencilerin isimlerinin listelenmesi:
@@ -233,6 +304,18 @@ HAVING COUNT (publisher.publisher_name) < 5
 * Başlığı "VERİTABANLARI" olan konu kapsamındaki kitap tablosuna en son eklenen kitap adının listelenmesi:
 
 ```sql
+--Microsoft SQL server için;
+SELECT  TOP(1) *  
+FROM book
+WHERE subject_no=2 
+ORDER BY book_no DESC;
+
+--pgAdmin için;
+SELECT *  
+FROM book 
+WHERE subject_no=2 
+ORDER BY book_no 
+DESC limit 1;
 ```
 
 * Kitaplar için 200 TL den fazla harcama yapan öğrencilerinin listelenmesi:
