@@ -158,7 +158,9 @@ ya da
 ```sql
 SELECT book_no, book_name, publisher_no
 FROM book
-WHERE publisher_no = ( SELECT publisher_no FROM publisher WHERE publisher_name = 'Abaküs Yayınevi' )
+WHERE publisher_no = ( 	SELECT publisher_no 
+			FROM publisher 
+			WHERE publisher_name = 'Abaküs Yayınevi' )
 ORDER BY book_year DESC;
 ```
 
@@ -185,7 +187,8 @@ GROUP BY publisher.publisher_no, publisher.publisher_name;
 ```sql
 SELECT COUNT(publisher.publisher_name) AS "toplam_kitap", publisher.publisher_name 
 FROM publisher
-INNER JOIN book ON publisher.publisher_no = book.publisher_no 
+INNER JOIN book 
+ON publisher.publisher_no = book.publisher_no 
 WHERE book_year >= 2000 AND book_year <= 2015
 GROUP BY publisher.publisher_no, publisher.publisher_name 
 HAVING COUNT (publisher.publisher_name) < 5;
@@ -213,7 +216,8 @@ FROM (	SELECT publisher.publisher_name,
 	(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2002) book_count_2002,
 	(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2003) book_count_2003,
 	(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2004) book_count_2004 
-	FROM publisher ) publishers 
+	FROM publisher 
+      ) publishers 
 WHERE publishers.book_count_2002 > 0 
 OR publishers.book_count_2003 > 0 
 OR publishers.book_count_2004 > 0;
@@ -229,7 +233,8 @@ FROM (	SELECT publisher.publisher_name,
 	(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2016) book_count_2016,
 	(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2015) book_count_2015,
 	(SELECT COUNT(*) book_count FROM book, publisher WHERE book_year=2014) book_count_2014 
-	FROM publisher ) publishers 
+	FROM publisher
+     ) publishers 
 WHERE publishers.book_count_2018 > 0 
 OR publishers.book_count_2017 > 0 
 OR publishers.book_count_2016 > 0 
@@ -247,7 +252,8 @@ WHERE book_author
 IN (	SELECT TOP(1) book_author 
 	FROM book 
 	GROUP BY book_author 
-	ORDER BY COUNT(*) DESC);
+	ORDER BY COUNT(*) DESC
+    );
 
 --pgAdmin için;
 SELECT book_name 
@@ -256,7 +262,8 @@ WHERE book_author
 IN (	SELECT book_author 
 	FROM book 
 	GROUP BY book_author 
-	ORDER BY COUNT(*) DESC limit 1);
+	ORDER BY COUNT(*) DESC limit 1
+    );
 ```
 
 * Ortalama kitap fiyatının üzerinde olan kitap isimlerinin listelenmesi:
@@ -265,7 +272,8 @@ IN (	SELECT book_author
 SELECT book_name, book_price 
 FROM book 
 WHERE book_price > (	SELECT AVG(book_price) "ortalama_stok" 
-			FROM book);
+			FROM book
+		   );
 ```
 ya da
 
@@ -274,18 +282,20 @@ SELECT book_name, SUM(book_price) "book_price"
 FROM book 
 GROUP BY book_name 
 HAVING SUM(book_price) > (	SELECT AVG(book_price) 
-				FROM book);
+				FROM book
+			 );
 ```
 
 * Bilgisayar Mühendisliği Bölümü öğrencilerinden VERİTABANLARI konusu ile ilgilenenlerin isimlerinin listelenmesi:
 
 ```sql
 SELECT student.student_name 
-FROM (SELECT student_no 
+FROM (	SELECT student_no 
 	FROM book 
 	INNER JOIN buys 
 	ON book.book_no = buys.book_no 
-	WHERE subject_no = 2) interested 
+	WHERE subject_no = 2
+     ) interested 
 INNER JOIN student 
 ON student.student_no=interested.student_no;
 ```
@@ -344,7 +354,8 @@ FROM (	SELECT student_no, SUM(book_price) book_price
 	INNER JOIN buys 
 	ON buys.book_no=book.book_no 
 	WHERE book_price > 20
-	GROUP BY student_no ) xx 
+	GROUP BY student_no 
+      ) xx 
 INNER JOIN student 
 ON student.student_no=xx.student_no;
 ```
