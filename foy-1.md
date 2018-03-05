@@ -146,31 +146,76 @@ VALUES ('Siber Güvenlik Kitapları')
 
 * Abaküs yayın evi tarafından yayınlanan kitapların numaralarını ve isimlerinin listelenmesi (yayın yılı artan düzende):
 
+```sql
+```
+
 * Kitap adlarını yayıncı adına göre gruplanması ve her grup içerisindeki kayıtları yayınlanma tarihine göre sıralanması:
+
+```sql
+```
 
 * Her bir yayıncı gurubundan kaç adet kitabın olduğunu adet ve yayıncı adını verecek şekilde oluşturulması:
 
+```sql
+```
+
 * 2000-2002 döneminde en fazla beş kitap yayınlayan yayıncıların listelenmesi:
+
+```sql
+```
 
 * En pahalı 10 kitabı adlarına göre listelenmesi:
 
+```sql
+```
+
 * 2002'den 2004'e kadar her yıl en az bir kitap yayınlayan yayıncıların listelenmesi:
+
+```sql
+```
 
 * Son beş yılda her yıl en az bir kitap yayınlayan yayıncıların listelenmesi:
 
+```sql
+```
+
 * En çok kitap yazan yazarın yazmış olduğu kitapların listelenmesi:
+
+```sql
+```
 
 * Ortalama kitap fiyatının üzerinde olan kitap isimlerinin listelenmesi:
 
+```sql
+```
+
 * Bilgisayar Mühendisliği Bölümü öğrencilerinden VERİTABANLARI konusu ile ilgilenenlerin isimlerinin listelenmesi:
+
+```sql
+```
 
 * AĞLAR konusunda satın kitap alan Bilgisayar Mühendisliği Bölümünde olmayan öğrencilerin adlarının ve bölüm adlarının listelenmesi:
 
+```sql
+```
+
 * Çalıştığı tüm konularla ilgili kitapları satın almış öğrencilerin isimlerinin listelenmesi:
+
+```sql
+```
 
 * Başlığı "VERİTABANLARI" olan konu kapsamındaki kitap tablosuna en son eklenen kitap adının listelenmesi:
 
+```sql
+```
+
 * Kitaplar için 200 TL den fazla harcama yapan öğrencilerinin listelenmesi:
 
+```sql
+```
+
 * Kitap tablosu üzerinde şart yazmadan yaptığınız bir select cümlesi sonucunda toplam 40 kayıt geleceğini düşünerek bunlar arasında 10 ile 20 inci kayıtlar arasındaki ikinci 10’ lu birlikteliği getiren bir sql cümlesi:
+
+```sql
+```
 
