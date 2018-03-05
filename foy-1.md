@@ -147,21 +147,47 @@ VALUES ('Siber Güvenlik Kitapları')
 * Abaküs yayın evi tarafından yayınlanan kitapların numaralarını ve isimlerinin listelenmesi (yayın yılı artan düzende):
 
 ```sql
+SELECT book_no, book_name, publisher_no
+FROM book
+WHERE publisher_no = 3 -- Abaküs yayınevi no
+ORDER BY book_year DESC;
+```
+
+ya da
+
+```sql
+SELECT book_no, book_name, publisher_no
+FROM book
+WHERE publisher_no = ( SELECT publisher_no FROM publisher WHERE publisher_name = 'Abaküs Yayınevi' )
+ORDER BY book_year DESC;
 ```
 
 * Kitap adlarını yayıncı adına göre gruplanması ve her grup içerisindeki kayıtları yayınlanma tarihine göre sıralanması:
 
 ```sql
+SELECT book_name,book_year,publisher_no 
+FROM book 
+ORDER BY publisher_no, book_year DESC;
 ```
 
 * Her bir yayıncı gurubundan kaç adet kitabın olduğunu adet ve yayıncı adını verecek şekilde oluşturulması:
 
 ```sql
+SELECT COUNT(publisher.publisher_name) AS "toplam_kitap", publisher.publisher_name 
+FROM Publisher
+INNER JOIN book ON publisher.publisher_no = book.publisher_no 
+GROUP BY publisher.publisher_no, publisher.publisher_name;
 ```
 
 * 2000-2002 döneminde en fazla beş kitap yayınlayan yayıncıların listelenmesi:
 
 ```sql
+SELECT COUNT(publisher.publisher_name) AS "toplam_kitap", publisher.publisher_name 
+FROM publisher
+INNER JOIN book ON publisher.publisher_no = book.publisher_no 
+WHERE book_year >= 2000 AND book_year <= 2015
+GROUP BY publisher.publisher_no, publisher.publisher_name 
+HAVING COUNT (publisher.publisher_name) < 5
 ```
 
 * En pahalı 10 kitabı adlarına göre listelenmesi:
