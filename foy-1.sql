@@ -279,7 +279,8 @@ FROM (	SELECT student_no, SUM(book_price) book_price
 INNER JOIN student 
 ON student.student_no=xx.student_no;
 
---Kitap tablosu üzerinde şart yazmadan yaptığınız bir select cümlesi sonucunda toplam 40 kayıt geleceğini düşünerek bunlar arasında 10 ile 20 inci kayıtlar arasındaki ikinci 10’ lu birlikteliği getiren bir sql cümlesi:
+--Kitap tablosu üzerinde şart yazmadan yaptığınız bir select cümlesi sonucunda toplam 40 kayıt geleceğini düşünerek;
+--bunlar arasında 10 ile 20 inci kayıtlar arasındaki ikinci 10’ lu birlikteliği getiren bir sql cümlesi:
 
 SELECT * FROM book 
 ORDER BY book_no 
