@@ -1,4 +1,5 @@
 --VERİ TABANI OLUŞTURMAK İÇİN;
+
 --Veri tabanı yönetim sisteminde, bir SQL penceresi açılarak aşağıdaki komut kümesi oluşturulup çalıştırıldığında; yeni bir veritabanı oluşturulmuş olur.
 CREATE DATABASE kitapevi
     WITH 
@@ -7,7 +8,8 @@ CREATE DATABASE kitapevi
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1 ;
 
---Microsoft SQL Server-da ise $PC_NAME -> DATABASE -> NEW DATABASE seçilere –kitabevi- adında yeni bir veri tabanı oluşturulur. Üst menüden New Query seçilerek aşağıdaki komut kümesi (DDL) kullanılarak yeni bir veri tabanı da oluşturulabilir. 
+--Microsoft SQL Server-da ise $PC_NAME -> DATABASE -> NEW DATABASE seçilere –kitabevi- adında yeni bir veri tabanı oluşturulur. 
+--Üst menüden New Query seçilerek aşağıdaki komut kümesi (DDL) kullanılarak yeni bir veri tabanı da oluşturulabilir. 
 
 CREATE DATABASE kitapevi ON PRIMARY( --PRIMARY belirtilmemişse, CREATE DATABASE deyiminde listelenen ilk dosya birincil dosya olur.
     NAME = kitapevi_Data, --SQL Server veritabanına başvurduğunda bu ismi kullanır. İsim uniqe(benzersiz) olmak zorundadır.
@@ -94,6 +96,8 @@ VALUES ('Modern Klasikler')
 INSERT INTO subject
 VALUES ('Siber Güvenlik Kitapları')
 
+--SORGULAR
+
 --Abaküs yayın evi tarafından yayınlanan kitapların numaralarını ve isimlerinin listelenmesi (yayın yılı artan düzende):
 SELECT book_no, book_name, publisher_no
 FROM book
@@ -108,9 +112,7 @@ WHERE publisher_no = ( 	SELECT publisher_no
 			WHERE publisher_name = 'Abaküs Yayınevi' )
 ORDER BY book_year DESC;
 
-
 --Kitap adlarını yayıncı adına göre gruplanması ve her grup içerisindeki kayıtları yayınlanma tarihine göre sıralanması:
-
 
 SELECT book_name,book_year,publisher_no 
 FROM book 
@@ -118,16 +120,13 @@ ORDER BY publisher_no, book_year DESC;
 
 --Her bir yayıncı gurubundan kaç adet kitabın olduğunu adet ve yayıncı adını verecek şekilde oluşturulması:
 
-
 SELECT COUNT(publisher.publisher_name) AS "toplam_kitap", publisher.publisher_name 
 FROM Publisher
 INNER JOIN book 
 ON publisher.publisher_no = book.publisher_no 
 GROUP BY publisher.publisher_no, publisher.publisher_name;
 
-
 --2000-2002 döneminde en fazla beş kitap yayınlayan yayıncıların listelenmesi:
-
 
 SELECT COUNT(publisher.publisher_name) AS "toplam_kitap", publisher.publisher_name 
 FROM publisher
@@ -136,7 +135,6 @@ ON publisher.publisher_no = book.publisher_no
 WHERE book_year >= 2000 AND book_year <= 2015
 GROUP BY publisher.publisher_no, publisher.publisher_name 
 HAVING COUNT (publisher.publisher_name) < 5;
-
 
 --En pahalı 10 kitabı adlarına göre listelenmesi:
 
@@ -150,7 +148,6 @@ SELECT book_name, book_price
 FROM book 
 ORDER BY book_price DESC limit 10;
 
-
 --2002'den 2004'e kadar her yıl en az bir kitap yayınlayan yayıncıların listelenmesi:
 
 SELECT publishers.publisher_name 
@@ -163,7 +160,6 @@ FROM (	SELECT publisher.publisher_name,
 WHERE publishers.book_count_2002 > 0 
 OR publishers.book_count_2003 > 0 
 OR publishers.book_count_2004 > 0;
-
 
 --Son beş yılda her yıl en az bir kitap yayınlayan yayıncıların listelenmesi:
 
@@ -181,7 +177,6 @@ OR publishers.book_count_2017 > 0
 OR publishers.book_count_2016 > 0 
 OR publishers.book_count_2015 > 0 
 OR publishers.book_count_2014 > 0;
-
 
 --En çok kitap yazan yazarın yazmış olduğu kitapların listelenmesi:
 
@@ -207,13 +202,11 @@ IN (	SELECT book_author
 
 --Ortalama kitap fiyatının üzerinde olan kitap isimlerinin listelenmesi:
 
-
 SELECT book_name, book_price 
 FROM book 
 WHERE book_price > (	SELECT AVG(book_price) "ortalama_stok" 
 			FROM book
 		   );
-
 --ya da
 
 SELECT book_name, SUM(book_price) "book_price" 
