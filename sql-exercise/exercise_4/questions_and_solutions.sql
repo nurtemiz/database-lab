@@ -5,21 +5,21 @@ select * from Providers;
 select * from provides; 
 
 
--- 5.1
+-- 4.1
 -- Select the name of all the pieces. 
 select Name from Pieces;
 
--- 5.2 
+-- 4.2 
 -- Select all the providers' data. 
 select * from providers;
  
--- 5.3
+-- 4.3
 -- Obtain the average price of each piece (show only the piece code and the average price).
 select piece, avg(price) 
 from Provides 
 group by piece;
 
--- 5.4 
+-- 4.4 
 -- Obtain the names of all providers who supply piece 1.
 select Name 
 from Providers
@@ -46,7 +46,7 @@ where Provides.Piece = 1;
 
 
 
--- 5.5
+-- 4.5
 -- Select the name of pieces provided by provider with code "HAL".
 select Name from Pieces
 where Code in (
@@ -70,7 +70,7 @@ SELECT Name
   );
 
 
--- 5.6
+-- 4.6
 -- ---------------------------------------------
 -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -- Intereting and important one.
@@ -100,21 +100,21 @@ SELECT Pieces.Name, Providers.Name, Price
 -- --------------------------------------------------------------
  
 
--- 5.7
+-- 4.7
 -- Add an entry to the database to indicate that "Skellington Supplies" (code "TNBC") will provide sprockets (code "1") for 7 cents each.
 INSERT INTO Provides(Piece, Provider, Price) VALUES (1, 'TNBC', 7);
 
--- 5.8
+-- 4.8
 -- Increase all prices by one cent.
 UPDATE Provides
 SET Price = Price + 1;
 
--- 5.9
+-- 4.9
 -- Update the database to reflect that "Susan Calvin Corp." (code "RBT") will not supply bolts (code 4).
 DELETE FROM Provides WHERE provider = 'RBT' AND Piece = 4;
 
 
--- 5.10
+-- 4.10
 -- Update the database to reflect that "Susan Calvin Corp." (code "RBT") will not supply any pieces 
 -- (the provider should still remain in the database).
 DELETE FROM provides
