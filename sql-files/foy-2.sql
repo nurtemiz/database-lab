@@ -151,3 +151,5 @@ SELECT * FROM sales_order WHERE s_order_date = CURRENT_DATE
 --
 SELECT * FROM sales_order WHERE dely_date < CURRENT_DATE - INTERVAL '10' DAY;
 
+
+-- CREATED BY NUR TEMİZ
