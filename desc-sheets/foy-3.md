@@ -3,9 +3,9 @@
 
 ### 1.	Saklı Yordamlar(Stored Procedures):
 
-Bir tabloya bağlı olmaksızın veritabanı uzayında tanımlanan belirli bir işi yapmaya yönelik kodlardır. Başka bir değişle "Derlenmiş sql cümlecikleridir". Saklı yordam olarak tanımlanan bu yapılar kullanılan veritabanı yönetim sistemine ait programlanabilir sql dil kullanılarak gerçekleştirilir. 
+Bir tabloya bağlı olmaksızın veritabanı uzayında tanımlanan belirli bir işi yapmaya yönelik kodlardır. Başka bir deyişle "Derlenmiş sql cümlecikleridir". Saklı yordam olarak tanımlanan bu yapılar kullanılan veritabanı yönetim sistemine ait programlanabilir sql dil kullanılarak gerçekleştirilir. 
 
-Her veritabanı yönetim sistemi standart sql dilini desteklemekle birlikte kendi üzerinde bazı programlanabilir özelliklere sahip bir dil barındırırlar. MS SQL Server ortamında T-SQL dili, ORACLE ortamında PL-SQL PostgreSQL PL/pgSQL dili, Sybase (T-SQL).
+Her veritabanı yönetim sistemi standart sql dilini desteklemekle birlikte kendi üzerinde bazı programlanabilir özelliklere sahip bir dil barındırırlar. MS SQL Server ortamında T-SQL dili, ORACLE ortamında PL-SQL PostgreSQL PL/pgSQL dili, Sybase(T-SQL).
 
 #### 1.1	Stored Procedure ne işe yarar?
 
