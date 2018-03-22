@@ -193,3 +193,6 @@ _Resim2.15  sales_order_details tablosundaki bütün verilerin görüntülenmesi
 •	Sipariş tarihi 10 gün geçen siparişleri müşteri isimleri ve ürün isimleri olarak liteleyen bir sorgu:
 
 ![image2.25](/desc-sheets/images/foy-2/2-25.png)
+
+
+_**NUR TEMİZ**_
