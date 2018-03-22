@@ -129,3 +129,4 @@ DEALLOCATE tCursor
 SELECT * FROM Ogrenci
 
 
+-- CREATED BY NUR TEMİZ
