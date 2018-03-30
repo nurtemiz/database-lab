@@ -1,7 +1,7 @@
 
 ## Saklı Yordamlar(Stored Procedures), Fonksiyonlar(Functions), İmleçler(Cursorler) ve Transaction Blokları
 
-Bu dökümanda oluşturulan procedure, view, cursor-ların ve yapılan veri tabanı sorgularının kullanımına ilişkin Windows form örneğine [buradan](https://github.com/nurtemiz/windows-form-app) ulaşabilirsiniz.
+_Bu dökümanda oluşturulan procedure, view, cursor ve yapılan veri tabanı sorgularının kullanımına ilişkin Windows form örneğine [buradan](https://github.com/nurtemiz/windows-form-app) ulaşabilirsiniz._
 
 ### 1.	Saklı Yordamlar(Stored Procedures):
 
@@ -119,6 +119,6 @@ _Resim-13 cursor oluşturulması_
 ![image3.14](/desc-sheets/images/foy-3/3-14.png)
 _Resim-14 cursor kullanılması_
 
-Oluşturulan procedure, view, cursor-ların ve yapılan veri tabanı sorgularının kullanımına ilişkin Windows form örneğine [buradan](https://github.com/nurtemiz/windows-form-app) ulaşabilirsiniz.
+_Oluşturulan procedure, view, cursor-ların ve yapılan veri tabanı sorgularının kullanımına ilişkin Windows form örneğine [buradan](https://github.com/nurtemiz/windows-form-app) ulaşabilirsiniz._
 
 _**NUR TEMİZ**_
