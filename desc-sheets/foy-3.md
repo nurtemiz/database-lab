@@ -1,6 +1,8 @@
 
 ## Saklı Yordamlar(Stored Procedures), Fonksiyonlar(Functions), İmleçler(Cursorler) ve Transaction Blokları
 
+Bu dökümanda oluşturulan procedure, view, cursor-ların ve yapılan veri tabanı sorgularının kullanımına ilişkin Windows form örneğine [buradan](https://github.com/nurtemiz/windows-form-app) ulaşabilirsiniz.
+
 ### 1.	Saklı Yordamlar(Stored Procedures):
 
 Bir tabloya bağlı olmaksızın veritabanı uzayında tanımlanan belirli bir işi yapmaya yönelik kodlardır. Başka bir deyişle "Derlenmiş sql cümlecikleridir". Saklı yordam olarak tanımlanan bu yapılar kullanılan veritabanı yönetim sistemine ait programlanabilir sql dil kullanılarak gerçekleştirilir. 
@@ -117,5 +119,6 @@ _Resim-13 cursor oluşturulması_
 ![image3.14](/desc-sheets/images/foy-3/3-14.png)
 _Resim-14 cursor kullanılması_
 
+Oluşturulan procedure, view, cursor-ların ve yapılan veri tabanı sorgularının kullanımına ilişkin Windows form örneğine [buradan](https://github.com/nurtemiz/windows-form-app) ulaşabilirsiniz.
 
 _**NUR TEMİZ**_
