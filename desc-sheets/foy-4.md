@@ -16,21 +16,35 @@ ve bu özellikleri gerçekleştirmek için XML/JSON işaretleme dillerinden fayd
 **Web Servislerin iki temel kullanımı vardır:**
 
 •	Reusable application-components (Yeniden kullanılabilir uygulama bileşenleri): Bazı uygulama bileşenleri birden fazla yerde değişik şekillerde kullanılabilir. Web servisler bunu sağlayabilir. Örneğin para birimi dönüşümü, hava durumu raporları veya dil tercümanlığını dahi servis olarak uygulama bileşeni halinde sunabilir.
+
 •	Connect existing software: Web Servisler verilen farklı uygulamaların veri bağlantısı için birliktelik(interoperability) problemini çözmenize yardım edebilir. Web Servisleri ile veriyi farklı uygulamalar ve farklı platformlar arasında değiştirebilirsiniz.
 
 **Web servisler ile diğer programlama dilleri veya diğer platformlardan xml ile erişilebilir bu sayede platformdan ve programlama dilinden bağımsız olarak aynı uygulamayı yapabiliriz. Bunun için temel platform elemenleri şunlardır:**
+
 •	SOAP (Simple Object Access Protocol)
+
 •	UDDI (Universal Description, Discovery and Integration)
+
 •	WSDL (Web Services Description Language)
 
-**SOAP(Simple Object Access Protocol):**SOAP, XML tabanlı uygulamalarda HTTP üzerinden bilgi değişimine izin veren protokoldür. Basitçe SOAP, Web Servis erişimi için protokoldür. RPC (Remote Procedure Call, DCOM, IIOP (Internet Inter-ORB Protocol) ve Java RMI bu çözümlerden bazılarıdır. SOAP,  mesaj göndermek için bir formattır. Internet üzerinden iletişim kurmak amacıyla tasarlanmıştır. Platformdan ve programlama dilinden bağımsızdır. Firewall geçebilmeye izin verir. W3C standardıdır. 
+**SOAP(Simple Object Access Protocol):** SOAP, XML tabanlı uygulamalarda HTTP üzerinden bilgi değişimine izin veren protokoldür. 
 
-**WSDL(Web Services Description Language): **WSDL, XML tabanlı web servisleri tanımlamak ve yerini belirtmek için tanımlanmış dildir. WSDL, W3C standardıdır. Bir anlamda dağıtık programlamada kullanılan IDL’e (Interface Definition Language – Arayüz Tanımlama Dili) benzer. Web servisi tanımı işlemler, giren ve çıkan mesaj formatları, ağ ve port adresleri gibi bilgileri tanımlar. Bir web servisi tanım belgesi aşağıdaki temel elemanları içerir:
+Basitçe SOAP, Web Servis erişimi için protokoldür. RPC (Remote Procedure Call, DCOM, IIOP (Internet Inter-ORB Protocol) ve Java RMI bu çözümlerden bazılarıdır. SOAP,  mesaj göndermek için bir formattır. Internet üzerinden iletişim kurmak amacıyla tasarlanmıştır. Platformdan ve programlama dilinden bağımsızdır. Firewall geçebilmeye izin verir. W3C standardıdır. 
+
+**WSDL(Web Services Description Language):** WSDL, XML tabanlı web servisleri tanımlamak ve yerini belirtmek için tanımlanmış dildir. WSDL, W3C standardıdır. Bir anlamda dağıtık programlamada kullanılan IDL’e (Interface Definition Language – Arayüz Tanımlama Dili) benzer. 
+
+Web servisi tanımı işlemler, giren ve çıkan mesaj formatları, ağ ve port adresleri gibi bilgileri tanımlar. Bir web servisi tanım belgesi aşağıdaki temel elemanları içerir:
+
 •	Types: mesajlarda kullanılacak veri tiplerini belirtir.
+
 •	Message: İletişimde kullanılacak measjları tanımlar.
+
 •	PortType : Web servisinin içerdiği işlemleri (methods) ve ilgili mesajları tanımlar.
+
 •	Binding : İşlem ve mesajlarda kullanılacak veri formatlarını tanımlar.
+
 •	Port: Binding ve web adresinden oluşan servis noktasını tanımlar. Web adresi servisin çalıştırılacağı URL’dir.
+
 •	Service: Kullanılan port’lar kümesidir.
 
 **UDDI(Universal Description, Discovery and Integration):** Şirketlerin web servisler için kayıt edebildiği ve arayabildiği dizin servisidir. UDDI Kurum Kayıt Servisi (UDDI Business Registry) kurum ve web servisleri bilgilerini saklayan sunuculardır. Bu sunucular servis sağlayıcılarından gelen bilgilerini kendi veritabanlarına kayıt ederek diğer kurumların erişimine açar. Şu anda aktif olarak çalışan kurum kayıt sunucuları uddi.microsoft.com ve uddi.ibm.com ‘dur.
@@ -42,15 +56,20 @@ UDDI, web servisler hakkında bilgi depolandığı dizinlerdir. WSDL tarafından
 **Bir web servisi istemcisinin bir servis sağlayıcıdan bir servisi çağırma aşamasındaki temel adımlar:**
 
 •	Web servisi istemcisi (SOAP Client) servis kayıt biriminden (UDDI) web servisini bulur. 
+
 •	İstemci bir SOAP mesajı hazırlar. SOAP mesajı bir XML belgesidir. 
+
 •	İstemci SOAP mesajını web server veya uygulama sunucusunda çalışan SOAP istek dinleyicisine gönderir. İstek dinleyici gelen isteklere cevap veren sunucu programlardır.  Bu programlar bir JSP, ASP, CGI veya ISAPI programıdır. 
-•	SOAP sunucu gelen SOAP mesajını parse eder ve gerekli parametreleri göndererek istenen nesnenin istenen yöntemini çağırır. 
+
+•	SOAP sunucu gelen SOAP mesajını parse eder ve gerekli parametreleri göndererek istenen nesnenin istenen yöntemini çağırır.
+
 •	Çağırılan nesnedeki yöntem çalışır ve sonuçları SOAP sunucusuna gönderir. SOAP sunucusu gelen sonucu SOAP mesajı formatında biçimlendirerek istemciye gönderir. 
+
 •	İstemci gelen SOAP mesajının içindeki bilgileri alarak istekte bulunan programa gönderir.
 
 ## UYGULAMA
 
-Burada bir web service oluşturulup ve bir web form tarafından kullanılımı gösterilmiştir.
+Burada bir web service oluşturulması ve bir web form tarafından kullanılmasıı gösterilmiştir.
 
 •	Microsoft SQL Server'da, üzerinde işlem yapılacak olan veri tabanının oluşturulması ve tabloların oluşturulup verilerin girilmesi:
 
@@ -174,7 +193,7 @@ Formun tasarlanması:
 
 T.C. İçişleri Bakanlığı Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü tarafından kullanıma sunulan web servisinin projeye eklenmesi:
 
-**DİKKAT: **KPS Servisi yalnızca SSL (https adresi) üzerinden hizmet veriyor.
+**DİKKAT:** KPS Servisi yalnızca SSL (https adresi) üzerinden hizmet veriyor.
 
 Bu servisi proje içerisinde kullanabilmek için öncelikle Solution Explorer içerisinde yer alan References alanına sağ tıklayalım ve Add Service Reference… seçeneğini seçelim.
 
@@ -211,7 +230,7 @@ private void button1_Click(object sender, EventArgs e)
         }
 ```
 
-Uygulamanın çelıştırılması:
+Uygulamanın çalıştırılması:
 
 ![image4.37](/desc-sheets/images/foy-4/4-36.png)
 
